@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+  background-color: aliceblue;
+  min-height: 100vh;
+}
+
+.adicionar {
+  display: flex;
+  flex-direction: column;
+  width: 44%;
+  margin-left: 30%;
+}
+
+.App h2 {
+  padding: 21px;
+  margin: -7px;
+}
+
+.adicionar input {
+  height: 55px;
+  border: 2px solid gray;
+  border-radius: 7px;
+}
+
+.adicionar button {
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-left: 2%;
+  width: 95%;
+  height: 50px;
+  background-color: plum;
+  border: 1px solid plum;
+}
+
+.adicionar button:hover {
+  background-color: purple;
+  border: 1px solid purple;
+  color: white;
+}
