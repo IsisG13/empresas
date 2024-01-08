@@ -2,10 +2,28 @@ import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { format, differenceInCalendarDays, parse } from "date-fns";
 
 export default function Home() {
   const [dados, setDados] = useState([]);
+  const [dataAtual, setDataAtual] = useState("");
   const router = useRouter();
+
+  const deletar = async (id) => {
+    const confirmarDelete = window.confirm("Quer mesmo deletar esta empresa?");
+
+    if (confirmarDelete) {
+      try {
+        await fetch(`/api/dados/${id}`, { method: "DELETE" });
+
+        const novosDados = dados.filter((item) => item.id !== id);
+        console.log("Novos Dados após a exclusão:", novosDados);
+        setDados(novosDados);
+      } catch (error) {
+        console.error("Erro ao excluir dados: ", error);
+      }
+    }
+  };
 
   useEffect(() => {
     const fetchDados = async () => {
@@ -20,22 +38,30 @@ export default function Home() {
     };
 
     fetchDados();
+
+    const currentDate = new Date();
+    setDataAtual(format(currentDate, "dd/MM/yyyy"));
   }, []);
 
-  const deletar = async (id) => {
-    const confirmarDelete = window.confirm("Quer mesmo deletar esta empresa?");
 
-    if (confirmarDelete) {
-      try {
-        await fetch("/api/dados/${id}", { method: "DELETE" });
-
-        const novosDados = dados.filter((item) => item.id !== id);
-        setDados(novosDados);
-      } catch (error) {
-        console.error("Erro ao expluir dados: ", error);
-      }
+  const mudarCor = (dataDeEnvio) => {
+    const dataEnvio = parse(dataDeEnvio, 'dd/MM/yyyy', new Date());
+    const diffEmDias = differenceInCalendarDays(new Date(), dataEnvio);
+    
+    console.log("Data de Envio (formatada):", format(dataEnvio, 'dd/MM/yyyy'));
+    console.log("Data Atual:", format(new Date(), 'dd/MM/yyyy'));
+    console.log("Diferença em Dias:", diffEmDias);
+  
+    if (diffEmDias <= 4) {
+      return styles.verde;
+    } else if (diffEmDias <= 8) {
+      return styles.amarelo;
+    } else if (diffEmDias <= 12) {
+      return styles.laranja;
+    } else if (diffEmDias >= 25) {
+      return styles.vermelho;
     }
-  };
+  }
 
   return (
     <div className="main">
@@ -48,15 +74,18 @@ export default function Home() {
             <Link href="/adicionar">Adicionar Empresas</Link>
           </button>
         </div>
+        <p>Data Atual: {dataAtual}</p>
         {dados.map((item) => (
           <div key={item.id}>
             <div className={styles.conteudo}>
               <p>{item.nome}</p>
               <p>{item.dataDeEnvio}</p>
-              <div className={styles.elementos}>
-                <div className={styles.cor}>status</div>
-                <button onClick={() => deletar(item.id)}>Delete</button>
+              <div
+                className={`${styles.elementos} ${mudarCor(item.dataDeEnvio)}`}
+              >
+                styles
               </div>
+              <button onClick={() => deletar(item.id)}>Delete</button>
               <p>{item.email}</p>
             </div>
           </div>

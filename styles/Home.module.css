@@ -37,14 +37,29 @@
   margin-top: -8%;
 }
 
-.cor {
-  background-color: #ff6e6e;
+.elementos {
   margin-left: 15%;
   margin-top: -7%;
   border-radius: 50px;
   width: 3%;
   height: 16px;
   color: transparent;
+}
+
+.verde {
+  background-color: #4caf50;
+}
+
+.amarelo {
+  background-color: #ffeb3b; 
+}
+
+.laranja {
+  background-color: #ff9800; 
+}
+
+.vermelho {
+  background-color: #f44336; 
 }
 
 .conteudo button {

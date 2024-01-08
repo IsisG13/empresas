@@ -16,13 +16,15 @@
   margin: -7px;
 }
 
-.adicionar input {
+.formulario input {
+  display: flex;
   height: 55px;
+  width: 100%;
   border: 2px solid gray;
   border-radius: 7px;
 }
 
-.adicionar button {
+.formulario button {
   text-transform: uppercase;
   font-weight: bold;
   border-radius: 5px;
@@ -33,7 +35,7 @@
   border: 1px solid plum;
 }
 
-.adicionar button:hover {
+.formulario button:hover {
   background-color: purple;
   border: 1px solid purple;
   color: white;
