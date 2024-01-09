@@ -1,3 +1,120 @@
+.cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding-top: 1%;
+}
+
+.header {
+  margin-top: 0;
+  min-height: 110vh;
+  text-align: center;
+}
+
+.header .deleteButton {
+  background-color: #8efbff;
+  border: 1px solid #8efbff;
+  margin-left: 53%;
+  margin-top: 2%;
+  height: 38px;
+}
+
+.header button {
+  background-color: #8efbff;
+  border: 1px solid #8efbff;
+  margin-left: 18%;
+  height: 50px;
+}
+
+.header button:hover {
+  background-color: plum;
+  border: 1px solid plum;
+}
+
+.conteudo {
+  background-color: #cdf8ffdc;
+  width: 62%;
+  margin-left: 22%;
+  border-radius: 7px;
+}
+
+.deletar {
+  display: flex;
+  align-items: baseline;
+  margin-top: -8%;
+}
+
+.elementos {
+  margin-left: 15%;
+  margin-top: 3%;
+  border-radius: 50px;
+  width: 2%;
+  height: 23px;
+  color: transparent;
+}
+
+.verde {
+  background-color: #4caf50;
+}
+
+.amarelo {
+  background-color: #ffeb3b; 
+}
+
+.laranja {
+  background-color: #ff9800; 
+}
+
+.vermelho {
+  background-color: #f44336; 
+}
+
+.deleteButton {
+  margin-top: 7px;
+  font-weight: bold;
+  margin-left: 62%;
+  width: 15%;
+  height: 31px;
+  background-color: #8efbff;
+  border: 1px solid #8efbff;
+}
+
+.conteudo button:hover {
+  font-weight: bold;
+  background-color: red;
+  border: 1px solid red;
+}
+
+.nomeSite button {
+  text-decoration: none;
+  color: #000;
+  background-color: transparent;
+  width: 15%;
+  height: 31px;
+  font-weight: bold;
+  margin-left: 3%;
+}
+
+.nomeSite button:hover {
+  background-color: #8efbff80;
+  border: 1px solid #8efbffc9;
+}
+
+.statusDelete {
+  display: flex;
+  margin-top: -6%;
+}
+
+.top {
+  padding-top: 2%;
+  text-transform: capitalize;
+}
+
+.bottom {
+  padding-bottom: 2%;
+}
+
 @media (max-width: 960px) {
   .cabecalho {
     display: flex;

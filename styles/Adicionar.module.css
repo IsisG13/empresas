@@ -1,7 +1,7 @@
   .App {
     text-align: center;
     background-color: aliceblue;
-    min-height: 100vh;
+    min-height: 99.2vh;
   }
   
   .adicionar {
@@ -13,24 +13,27 @@
   
   .App h2 {
     padding: 21px;
-    margin: -7px;
+    margin: 0px;
   }
   
   .formulario input {
     display: flex;
-    height: 55px;
-    width: 100%;
+    font-size: 95%;
+    height: 65px;
+    width: 86%;
+    margin-left: 5%;
     border: 2px solid gray;
     border-radius: 7px;
   }
   
   .formulario button {
     text-transform: uppercase;
+    font-size: 103%;
     font-weight: bold;
     border-radius: 5px;
-    margin-left: 2%;
-    width: 95%;
-    height: 50px;
+    margin-left: -3%;
+    width: 82%;
+    height: 60px;
     background-color: plum;
     border: 1px solid plum;
   }
@@ -45,7 +48,7 @@
   .App {
     text-align: center;
     background-color: aliceblue;
-    min-height: 100vh;
+    min-height: 99vh;
   }
   
   .adicionar {
@@ -57,7 +60,7 @@
   
   .App h2 {
     padding: 21px;
-    margin: -7px;
+    margin: 0px;
   }
   
   .formulario input {
@@ -72,7 +75,7 @@
     text-transform: uppercase;
     font-weight: bold;
     border-radius: 5px;
-    margin-left: 2%;
+    margin-left: 8%;
     width: 95%;
     height: 50px;
     background-color: plum;
@@ -102,7 +105,7 @@
   
   .App h2 {
     padding: 21px;
-    margin: -7px;
+    margin: 0px;
   }
   
   .formulario input {
