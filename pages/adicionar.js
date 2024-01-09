@@ -91,21 +91,24 @@ const Adicionar = () => {
             required
           />
           <br />
-
           <input
-            type="number"
+            type="tel"
             name="tel"
             placeholder="Telefone de contato"
             onChange={(e) => setTelefone(e.target.value)}
+            pattern="[0-9]{2,5}[-.\\s]?[0-9]{4,5}[-.\\s]?[0-9]{4}"
+            title="Digite um número de telefone. (ex: (XX) XXXXX-XXXX)"
             required
           />
           <br />
 
           <input
-            type="estado"
+            type="text"
             name="estado"
             placeholder="Estado"
-            onChange={(e) => setEstado(e.target.value)}
+            onChange={(e) => setEstado(e.target.value.toUpperCase())}
+            pattern="[A-Za-z]{2}"
+            title="Digite a sigla do estado (ex: BA)"
             required
           />
           <br />
