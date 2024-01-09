@@ -92,12 +92,11 @@ export default function Home() {
 
                 <p>{item.dataDeEnvio}</p>
                 <p>
-                  Tempo que foi enviada:
+                  Tempo que foi enviada: {' '}
                   {differenceInCalendarDays(
                     new Date(),
                     parse(item.dataDeEnvio, "dd/MM/yyyy", new Date())
-                  )}
-                  dias
+                  )}dias
                 </p>
                 <div className={styles.statusDelete}>
                   <div
