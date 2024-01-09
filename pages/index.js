@@ -1,4 +1,3 @@
-// Importações...
 import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -11,20 +10,27 @@ export default function Home() {
   const router = useRouter();
 
   const deletar = async (id) => {
+    console.log("ID a ser deletado:", id);
+  
     const confirmarDelete = window.confirm("Quer mesmo deletar esta empresa?");
-
+  
     if (confirmarDelete) {
       try {
-        await fetch(`/api/dados/${id}`, { method: "DELETE" });
-
-        const novosDados = dados.filter((item) => item.id !== id);
-        console.log("Novos Dados após a exclusão:", novosDados);
-        setDados(novosDados);
+        const response = await fetch(`/api/dados/${id}`, { method: "DELETE" });
+  
+        if (response.ok) {
+          const novosDados = dados.filter((item) => item.id !== id);
+          console.log("Novos Dados após a exclusão:", novosDados);
+          setDados(novosDados);
+        } else {
+          const errorMessage = await response.text();
+          console.error(`Erro ao excluir dados (HTTP ${response.status}): ${errorMessage}`);
+        }
       } catch (error) {
         console.error("Erro ao excluir dados: ", error);
       }
     }
-  };
+  };  
 
   useEffect(() => {
     const fetchDados = async () => {
@@ -43,8 +49,6 @@ export default function Home() {
     const currentDate = new Date();
     setDataAtual(format(currentDate, "dd/MM/yyyy"));
   }, []);
-
-  // const diffEmDias = differenceInCalendarDays(new Date(), dataEnvio);
 
   const mudarCor = (dataDeEnvio) => {
     const dataEnvio = parse(dataDeEnvio, "dd/MM/yyyy", new Date());
@@ -92,12 +96,11 @@ export default function Home() {
 
                 <p>{item.dataDeEnvio}</p>
                 <p>
-                  Tempo que foi enviada: {' '}
+                  Tempo que foi enviada:{" "}
                   {differenceInCalendarDays(
                     new Date(),
                     parse(item.dataDeEnvio, "dd/MM/yyyy", new Date())
-                  )}dias
-                </p>
+                  )} dias </p>
                 <div className={styles.statusDelete}>
                   <div
                     className={`${styles.elementos} ${mudarCor(
@@ -106,12 +109,7 @@ export default function Home() {
                   >
                     styles
                   </div>
-                  <button
-                    className={styles.deleteButton}
-                    onClick={() => deletar(item.id)}
-                  >
-                    Delete
-                  </button>
+                  <button className={styles.deleteButton} onClick={() => deletar(item.id)}> Delete </button>
                   <br />
                 </div>
                 <p>{item.email}</p>
