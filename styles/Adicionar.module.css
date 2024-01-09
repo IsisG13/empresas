@@ -1,42 +1,133 @@
-.App {
-  text-align: center;
-  background-color: aliceblue;
-  min-height: 100vh;
+  .App {
+    text-align: center;
+    background-color: aliceblue;
+    min-height: 100vh;
+  }
+  
+  .adicionar {
+    display: flex;
+    flex-direction: column;
+    width: 44%;
+    margin-left: 30%;
+  }
+  
+  .App h2 {
+    padding: 21px;
+    margin: -7px;
+  }
+  
+  .formulario input {
+    display: flex;
+    height: 55px;
+    width: 100%;
+    border: 2px solid gray;
+    border-radius: 7px;
+  }
+  
+  .formulario button {
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-left: 2%;
+    width: 95%;
+    height: 50px;
+    background-color: plum;
+    border: 1px solid plum;
+  }
+  
+  .formulario button:hover {
+    background-color: purple;
+    border: 1px solid purple;
+    color: white;
+  } 
+
+@media (max-width: 960px) {
+  .App {
+    text-align: center;
+    background-color: aliceblue;
+    min-height: 100vh;
+  }
+  
+  .adicionar {
+    display: flex;
+    flex-direction: column;
+    width: 44%;
+    margin-left: 30%;
+  }
+  
+  .App h2 {
+    padding: 21px;
+    margin: -7px;
+  }
+  
+  .formulario input {
+    display: flex;
+    height: 55px;
+    width: 100%;
+    border: 2px solid gray;
+    border-radius: 7px;
+  }
+  
+  .formulario button {
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-left: 2%;
+    width: 95%;
+    height: 50px;
+    background-color: plum;
+    border: 1px solid plum;
+  }
+  
+  .formulario button:hover {
+    background-color: purple;
+    border: 1px solid purple;
+    color: white;
+  }  
 }
 
-.adicionar {
-  display: flex;
-  flex-direction: column;
-  width: 44%;
-  margin-left: 30%;
-}
-
-.App h2 {
-  padding: 21px;
-  margin: -7px;
-}
-
-.formulario input {
-  display: flex;
-  height: 55px;
-  width: 100%;
-  border: 2px solid gray;
-  border-radius: 7px;
-}
-
-.formulario button {
-  text-transform: uppercase;
-  font-weight: bold;
-  border-radius: 5px;
-  margin-left: 2%;
-  width: 95%;
-  height: 50px;
-  background-color: plum;
-  border: 1px solid plum;
-}
-
-.formulario button:hover {
-  background-color: purple;
-  border: 1px solid purple;
-  color: white;
+@media (max-width: 800px) {
+  .App {
+    text-align: center;
+    background-color: aliceblue;
+    min-height: 100vh;
+  }
+  
+  .adicionar {
+    display: flex;
+    flex-direction: column;
+    width: 44%;
+    margin-left: 30%;
+  }
+  
+  .App h2 {
+    padding: 21px;
+    margin: -7px;
+  }
+  
+  .formulario input {
+    display: flex;
+    height: 55px;
+    width: 190%;
+    margin-left: -50%;
+    border: 2px solid gray;
+    border-radius: 7px;
+  }
+  
+  .formulario button {
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-left: -41%;
+    width: 178%;
+    height: 50px;
+    background-color: plum;
+    border: 1px solid plum;
+  }
+  
+  .formulario button:hover {
+    background-color: purple;
+    border: 1px solid purple;
+    color: white;
+  }  
 }
