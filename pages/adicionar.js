@@ -2,13 +2,16 @@ import styles from "@/styles/Adicionar.module.css";
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import db from "../firebase";
-import { format, parse } from 'date-fns';
+import { format, parse } from "date-fns";
 import { useRouter } from "next/router";
 
 const Adicionar = () => {
   const [novaEmpresa, setEmpresa] = useState("");
   const [novaData, setData] = useState("");
   const [novoEmail, setEmail] = useState("");
+  const [novoTelefone, setTelefone] = useState("");
+  const [novoEstado, setEstado] = useState("");
+  const [novoSite, setSite] = useState("");
   const [erro, setErro] = useState("");
   const router = useRouter();
 
@@ -20,6 +23,9 @@ const Adicionar = () => {
         nome: novaEmpresa,
         dataDeEnvio: dataFormatada,
         email: novoEmail,
+        telefone: novoTelefone,
+        estado: novoEstado,
+        site: novoSite,
       });
     } catch (error) {
       console.error("Erro ao adicionar empresa:", error);
@@ -28,27 +34,33 @@ const Adicionar = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    if (novaEmpresa.trim() === "" || novoEmail.trim() === "" || novaData.trim() === '') {
+
+    if (
+      novaEmpresa.trim() === "" ||
+      novoEmail.trim() === "" ||
+      novaData.trim() === "" ||
+      novoTelefone.trim() === "" ||
+      novoEstado.trim() === "" ||
+      novoSite.trim() === ""
+    ) {
       setErro("Preencha todos os campos corretamente.");
       return;
     }
-  
+
     setErro("");
-  
-    // Realizar a formatação da data antes de chamar a função empresaAdd
-    const dataFormatada = format(parse(novaData, 'yyyy-MM-dd', new Date()), 'dd/MM/yyyy');
-  
+
+    const dataFormatada = format(
+      parse(novaData, "yyyy-MM-dd", new Date()),
+      "dd/MM/yyyy"
+    );
+
     try {
-      // Adicionar a empresa apenas se todos os campos estiverem preenchidos corretamente
       await empresaAdd(dataFormatada);
-      // Redirecionar apenas após a conclusão bem-sucedida da adição
       router.push("/");
     } catch (error) {
       console.error("Erro ao adicionar empresa:", error);
     }
   };
-  
 
   return (
     <div className={styles.App}>
@@ -80,9 +92,34 @@ const Adicionar = () => {
           />
           <br />
 
-          <button type="submit">
-            Enviar
-          </button>
+          <input
+            type="number"
+            name="tel"
+            placeholder="Telefone de contato"
+            onChange={(e) => setTelefone(e.target.value)}
+            required
+          />
+          <br />
+
+          <input
+            type="estado"
+            name="estado"
+            placeholder="Estado"
+            onChange={(e) => setEstado(e.target.value)}
+            required
+          />
+          <br />
+
+          <input
+            type="site"
+            name="site"
+            placeholder="Site da empresa"
+            onChange={(e) => setSite(e.target.value)}
+            required
+          />
+          <br />
+
+          <button type="submit">Enviar</button>
         </form>
         {erro && <p>{erro}</p>}
       </div>

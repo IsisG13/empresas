@@ -12,6 +12,14 @@
   text-align: center;
 }
 
+.header .deleteButton {
+  background-color: #8efbff;
+  border: 1px solid #8efbff;
+  margin-left: 53%;
+  margin-top: -10%;
+  height: 38px;
+}
+
 .header button {
   background-color: #8efbff;
   border: 1px solid #8efbff;
@@ -31,7 +39,7 @@
   border-radius: 7px;
 }
 
-.elementos {
+.deletar {
   display: flex;
   align-items: baseline;
   margin-top: -8%;
@@ -62,7 +70,8 @@
   background-color: #f44336; 
 }
 
-.conteudo button {
+.deleteButton {
+  margin-top: 7px;
   font-weight: bold;
   margin-left: 62%;
   width: 15%;
@@ -75,4 +84,32 @@
   font-weight: bold;
   background-color: red;
   border: 1px solid red;
+}
+
+.nomeSite button {
+  text-decoration: none;
+  color: #000;
+  background-color: transparent;
+  width: 15%;
+  height: 31px;
+  font-weight: bold;
+  margin-left: 3%;
+}
+
+.nomeSite button:hover {
+  background-color: #8efbff80;
+  border: 1px solid #8efbffc9;
+}
+
+.statusDelete {
+  display: flex;
+  margin-top: -6%;
+}
+
+.top {
+  padding-top: 2%;
+}
+
+.bottom {
+  padding-bottom: 2%;
 }

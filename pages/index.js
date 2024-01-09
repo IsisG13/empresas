@@ -1,3 +1,4 @@
+// Importações...
 import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -43,15 +44,16 @@ export default function Home() {
     setDataAtual(format(currentDate, "dd/MM/yyyy"));
   }, []);
 
+  // const diffEmDias = differenceInCalendarDays(new Date(), dataEnvio);
 
   const mudarCor = (dataDeEnvio) => {
-    const dataEnvio = parse(dataDeEnvio, 'dd/MM/yyyy', new Date());
+    const dataEnvio = parse(dataDeEnvio, "dd/MM/yyyy", new Date());
     const diffEmDias = differenceInCalendarDays(new Date(), dataEnvio);
-    
-    console.log("Data de Envio (formatada):", format(dataEnvio, 'dd/MM/yyyy'));
-    console.log("Data Atual:", format(new Date(), 'dd/MM/yyyy'));
+
+    console.log("Data de Envio (formatada):", format(dataEnvio, "dd/MM/yyyy"));
+    console.log("Data Atual:", format(new Date(), "dd/MM/yyyy"));
     console.log("Diferença em Dias:", diffEmDias);
-  
+
     if (diffEmDias <= 4) {
       return styles.verde;
     } else if (diffEmDias <= 8) {
@@ -61,7 +63,7 @@ export default function Home() {
     } else if (diffEmDias >= 25) {
       return styles.vermelho;
     }
-  }
+  };
 
   return (
     <div className="main">
@@ -75,21 +77,51 @@ export default function Home() {
           </button>
         </div>
         <p>Data Atual: {dataAtual}</p>
-        {dados.map((item) => (
-          <div key={item.id}>
-            <div className={styles.conteudo}>
-              <p>{item.nome}</p>
-              <p>{item.dataDeEnvio}</p>
-              <div
-                className={`${styles.elementos} ${mudarCor(item.dataDeEnvio)}`}
-              >
-                styles
+        {dados &&
+          dados.map((item) => (
+            <div key={item.id}>
+              <div className={styles.conteudo}>
+                <div className={styles.nomeSite}>
+                  <p className={styles.top}>
+                    {item.nome}
+                    <a href={item.site} target="_blank">
+                      <button>Site</button>
+                    </a>
+                  </p>
+                </div>
+
+                <p>{item.dataDeEnvio}</p>
+                <p>
+                  Tempo que foi enviada:
+                  {differenceInCalendarDays(
+                    new Date(),
+                    parse(item.dataDeEnvio, "dd/MM/yyyy", new Date())
+                  )}
+                  dias
+                </p>
+                <div className={styles.statusDelete}>
+                  <div
+                    className={`${styles.elementos} ${mudarCor(
+                      item.dataDeEnvio
+                    )}`}
+                  >
+                    styles
+                  </div>
+                  <button
+                    className={styles.deleteButton}
+                    onClick={() => deletar(item.id)}
+                  >
+                    Delete
+                  </button>
+                  <br />
+                </div>
+                <p>{item.email}</p>
+                <p className={styles.bottom}>
+                  {item.telefone} - {item.estado}
+                </p>
               </div>
-              <button onClick={() => deletar(item.id)}>Delete</button>
-              <p>{item.email}</p>
             </div>
-          </div>
-        ))}
+          ))}
       </header>
     </div>
   );
