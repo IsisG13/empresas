@@ -70,6 +70,10 @@
   background-color: #f44336; 
 }
 
+.azul {
+  background-color: #1100ff;
+}
+
 .deleteButton {
   margin-top: 7px;
   font-weight: bold;

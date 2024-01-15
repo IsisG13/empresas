@@ -61,9 +61,11 @@ export default function Home() {
     if (diffEmDias <= 4) {
       return styles.verde;
     } else if (diffEmDias <= 8) {
-      return styles.amarelo;
+      return styles.azul;
     } else if (diffEmDias <= 12) {
-      return styles.laranja;
+      return styles.amarelo;
+    } else if(diffEmDias <= 24) {
+      return styles.laranja
     } else if (diffEmDias >= 25) {
       return styles.vermelho;
     }
